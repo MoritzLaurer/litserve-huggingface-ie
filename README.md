@@ -14,9 +14,9 @@ This repository provides guidance for how to build a custom LitServe container a
 
 2. Create a virtual environment and install the dependencies (this repo uses `poetry`). This should work with something like `poetry install`.
 
-3. Create a `server.py` file following the [LitServe docs](https://lightning.ai/docs/litserve/home/get-started). This repo contains an example `server.py` file, illustrating how to create a multimodal embedding server with the SigLIP model for both image and text embeddings.
+3. Create a `server.py` file following the [LitServe docs](https://lightning.ai/docs/litserve/home/get-started). This repo contains an example `server.py` file, illustrating how to create a multimodal embedding server with the SigLIP model for both image and text embeddings with batched processing.
 
-4. Test the server locally. Run `python server.py` in the terminal to start the server. Then you can make requests to the server. The example `client.py` file illustrates how to make requests to the SigLIP server (via `python client.py`).
+4. Test the server locally. Run `python server.py` in the terminal to start the server. Then you can make requests to the server. The example `client.py` file illustrates how to make requests to the SigLIP server (run via `python client.py`). `client_async.py` illustrates how to make requests to the server asynchronously to simulate several concurrent user requests.
 
 5. If the server works locally, you can build the container and push it to Docker Hub. The `Dockerfile` determines how the container will be built. This file is designed for endpoints that should run on Nvidia GPUs. The LitServe [Dockerization docs](https://lightning.ai/docs/litserve/features/dockerization-deployment) provide guidance for dockerizing your server.
    - The container will build its dependencies from the requirements.txt file. In case your `server.py` file requires additional dependencies, update the `requirements.txt` file accordingly.
@@ -28,7 +28,7 @@ This repository provides guidance for how to build a custom LitServe container a
 
 7. If everything worked well, you should then see your endpoint being initialized at https://endpoints.huggingface.co/. 
 
-8. Once the endpoint is successfully initialized, you can make requests to it. You can make requests similar to the examples in the `client.py` file, only that you need to replace the local endpoint (http://0.0.0.0:8080/predict) with the endpoint URL, which you can find in the endpoint interface. Your endpoint url should look something like `https://n3sawwkbgf04ooqp.us-east-1.aws.endpoints.huggingface.cloud` + `/predict`.
+8. Once the endpoint is successfully initialized, you can make requests to it. You can make requests similar to the examples in the `client.py` or `client_async.py` files, only that you need to replace the local endpoint (http://0.0.0.0:8080/predict) with the endpoint URL, which you can find in the endpoint interface. Your endpoint url should look something like `https://n3sawwkbgf04ooqp.us-east-1.aws.endpoints.huggingface.cloud` + `/predict`.
 
 
 ## Other

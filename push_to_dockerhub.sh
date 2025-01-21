@@ -3,7 +3,7 @@
 # Configuration
 DOCKER_USERNAME="moritzlaurer"
 REPOSITORY_NAME="litserve-huggingface-ie-siglip"
-VERSION="0.0.7-siglip-so400m-patch14-384"  # Change this when you want to update the version
+VERSION="0.0.8-siglip-so400m-patch14-384"  # Change this when you want to update the version
 
 # Build the Docker image
 echo "Building Docker image..."
