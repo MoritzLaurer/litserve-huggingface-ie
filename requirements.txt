@@ -1,0 +1,8 @@
+litserve==0.2.6
+requests==2.32.3
+transformers==4.48.0
+accelerate==1.2.1
+pillow==11.1.0
+sentencepiece==0.2.0
+protobuf==5.29.3
+
