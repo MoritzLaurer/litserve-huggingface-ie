@@ -24,15 +24,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install nginx using a different approach
-#RUN apt-get update && \
-#    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-#    nginx-light && \
-#    rm -rf /var/lib/apt/lists/*
-
-# Copy nginx configuration
-#COPY nginx.conf /etc/nginx/nginx.conf
-
 # Copy entrypoint script and set permissions
 COPY --chmod=775 endpoints-entrypoint.sh /entrypoint.sh
 

@@ -6,8 +6,8 @@ import requests
 class SimpleLitAPI(ls.LitAPI):
     def setup(self, device):
         self.device = device
-        self.model = AutoModel.from_pretrained("google/siglip-base-patch16-224").to(device)
-        self.processor = AutoProcessor.from_pretrained("google/siglip-base-patch16-224")
+        self.model = AutoModel.from_pretrained("google/siglip-so400m-patch14-384").to(device)  # google/siglip-base-patch16-224
+        self.processor = AutoProcessor.from_pretrained("google/siglip-so400m-patch14-384")
 
     def decode_request(self, request):
         print(request)

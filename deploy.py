@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 import re
 
 
-IMAGE_URL = "moritzlaurer/litserve-huggingface-ie-siglip:0.0.7"
-MODEL_ID = "google/siglip-base-patch16-224"  #"google/siglip-so400m-patch14-384"
-ENDPOINT_NAME = "siglip-base-patch16-224-litserve-010"
+IMAGE_URL = "moritzlaurer/litserve-huggingface-ie-siglip:0.0.7-siglip-so400m-patch14-384"
+MODEL_ID = "google/siglip-so400m-patch14-384"  #"google/siglip-base-patch16-224"
+ENDPOINT_NAME = "siglip-so400m-patch14-384-litserve-010"
 
 def create_compatible_endpoint_name(model_id: str) -> str:
     part = model_id.split('/')[-1]
