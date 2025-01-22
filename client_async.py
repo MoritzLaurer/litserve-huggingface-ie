@@ -1,5 +1,6 @@
 import asyncio
 import aiohttp
+import os
 
 # Restructure the input as a list of individual items
 inputs = [
@@ -11,10 +12,24 @@ inputs = [
 # multiple input to simulate many conurrent requests
 inputs = inputs * 10
 
+HF_ENDPOINT = True
+
+if HF_ENDPOINT:
+    endpoint = "https://py20wkmcjxf63zkw.us-east-1.aws.endpoints.huggingface.cloud"
+    headers = {
+        "Accept" : "application/json",
+        "Authorization": f"Bearer {os.getenv('HF_TOKEN')}",
+        "Content-Type": "application/json" 
+    }
+else:
+    endpoint = "http://0.0.0.0:8080"
+    headers = {}
+
+
 async def send_request(session, input_data):
-    async with session.post("http://0.0.0.0:8080/predict", json={"inputs": input_data}) as response:
+    async with session.post(endpoint + "/predict", json={"inputs": input_data}, headers=headers) as response:
         result = await response.json()
-        print(f"Status: {response.status}\nResponse keys: {result.keys()}")
+        print(f"Status: {response.status}\nResponse keys: {result.keys()}\nResponse: {result}")
         return result
 
 async def main():

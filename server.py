@@ -65,5 +65,5 @@ class SimpleLitAPI(ls.LitAPI):
 
 if __name__ == "__main__":
     api = SimpleLitAPI()
-    server = ls.LitServer(api, accelerator="auto", max_batch_size=32, batch_timeout=0.05, track_requests=True)
+    server = ls.LitServer(api, accelerator="auto", max_batch_size=32, batch_timeout=0.05, track_requests=True, timeout=30)
     server.run(port=8080)
